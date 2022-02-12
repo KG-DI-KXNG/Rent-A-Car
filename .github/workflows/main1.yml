@@ -1,0 +1,18 @@
+on: 
+  push:
+    branches: [ master ]
+name: Epic Car rental Auto Push
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get latest code
+      uses: actions/checkout@v2
+    
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.2.0
+      with:
+        server: ftp.epiccarrentalsja.com
+        username: ecrentals@epiccarrentalsja.com
+        password: tYy&1a9Fa@9(
