@@ -1,9 +1,7 @@
-
 on: 
   push:
-    branches:
-      . master
-name: Deploy website on push
+    branches: [ master ]
+name: Epic Car rental Auto Push
 jobs:
   web-deploy:
     name: Deploy
