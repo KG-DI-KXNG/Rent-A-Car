@@ -6,7 +6,7 @@
     <div class="flex items-center justify-center mt-8">
         <div class="flex items-center">
         <div class="bg-white rounded-md">
-            {{-- <x-application-logo /> --}}
+            <x-application-logo />
         </div>
             <span class="text-white text-2xl mx-2 font-semibold">{{ __('Dashboard') }}</span>
         </div>

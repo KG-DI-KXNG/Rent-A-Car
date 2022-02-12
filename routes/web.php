@@ -26,7 +26,7 @@ require __DIR__.'/auth.php';
 
 Route::get('index', function () {
     return view('index');
-});
+})->name("index");
 
 Route::get('about-us', function () {
     return view('about-us');
