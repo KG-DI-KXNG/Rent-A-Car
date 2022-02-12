@@ -51,8 +51,8 @@
         <div class="col-md-5 col-md-push-7">
           <div class="banner_content">
             <h1>Find the right car for you.</h1>
-            <p>We have more than a thousand cars for you to choose. </p>
-            <a href="#" class="btn">Read More <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a> </div>
+            <p>Quality rentals when you choose our epic brand. </p>
+            <a href="#" class="btn">Rent Now <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a> </div>
         </div>
       </div>
     </div>
@@ -63,6 +63,7 @@
 
 <!-- Resent Cat-->
 <section class="section-padding gray-bg">
+  
   <div class="container">
     <div class="section-header text-center">
       <h2>Find the Best <span>CarForYou</span></h2>
@@ -81,7 +82,7 @@
         <div role="tabpanel" class="tab-pane active" id="resentnewcar">
 
 
-            {{-- <div id="sec2" style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+            <div id="sec2" style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
               <h3 style="text-align:center;">Available Cars</h3>
       <br>
               <section class="menu-content">
@@ -145,7 +146,7 @@
                   
                   </div> 
                   </a>
-                              <a href="8">
+                               <a href="8">
                   <div class="sub-menu">
                   
       
@@ -157,7 +158,7 @@
                   
                   </div> 
                   </a>
-                              <a href="9">
+                       {{--       <a href="9">
                   <div class="sub-menu">
                   
       
@@ -228,11 +229,11 @@
       
                   
                   </div> 
-                  </a>
+                  </a> --}}
                                                     
               </section>
                           
-          </div> --}}
+          </div>
 
 <div class="col-list-3">
 <div class="recent-car-list">

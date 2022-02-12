@@ -31,9 +31,9 @@ Route::get('contact', function () {
     return view('contact');
 });
 
-Route::get('adminlogin', function () {
-    return view('admin/index');
-});
+// Route::get('adminlogin', function () {
+//     return view('admin/index');
+// });
 
 Route::get('dashboard', function () {
     return view('admin/dashboard');

@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="col-md-6 col-md-pull-6">
-        <p class="copy-right">Copyright &copy; 2021 Car Rental Syetem. Brought To You By <a href="#">Choudhary Salman</a></p>
+        <p class="copy-right">Copyright &copy; 2021 Epic Car Rental</a></p>
         </div>
       </div>
     </div>

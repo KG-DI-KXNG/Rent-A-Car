@@ -42,7 +42,7 @@
 									<button class="btn btn-primary btn-block"  onclick="loginadmin()">LOGIN</button>
 <p id="demo"></p>
 								
-
+								
 							</div>
 						</div>
 					</div>
@@ -60,7 +60,7 @@ function loginadmin(){
 var name = document.getElementById("name").value;
 var pasword = document.getElementById("pasword").value;
 
-if(name == "sidra" && pasword == "sidra"){
+if(name == "123" && pasword == "123"){
 
     window.location.href = "/dashboard";
 }
