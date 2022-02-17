@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+route::get('home', function(){
+    return redirect('/index');
+});
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard', ['page'=>'Dashboard']);
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
@@ -38,4 +44,13 @@ Route::get('contact', function () {
 
 Route::get('adminlogin', function () {
     return view('admin/index');
+});
+
+
+Route::middleware('auth')->group(function () {
+
+        Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users');
+        Route::post('new-user', [CustomersController::class, 'updateUser'])->name('new_user');
+        Route::get('category', [CategoryController::class, 'index'])->name('add-category');
+
 });

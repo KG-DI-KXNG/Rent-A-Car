@@ -1,7 +1,12 @@
 <x-app-layout>
   <x-slot name="header">
-          {{ __('Dashboard') }}
+          {{ __( $page ) }}
   </x-slot>
 
-  @livewire('admin-dashboard')
+  @if (request()->routeIs('dashboard'))
+    @livewire('admin-dashboard')
+  @else
+    @livewire('category')
+  @endif
+ 
 </x-app-layout>

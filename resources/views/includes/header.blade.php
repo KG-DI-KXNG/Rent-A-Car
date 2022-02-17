@@ -38,10 +38,10 @@
         </div>
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="nav navbar-nav">
-                <li><a href="/home">Home</a> </li>
+                <li><a href="/">Home</a> </li>
                 <li><a href="/reservation">Book Now</a></li> 
                 <li><a href="/car-listing">Car Listing</a>
-                <li><a href="/contact">Tours</a></li>
+                <li><a href="/tours">Tours</a></li>
                 {{-- <li><a href="/upload-car">Upload Car</a></li> --}}
                 <li class="dropdown">
                   <a id="drop2" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
@@ -49,9 +49,9 @@
                       {{-- <span class="caret"></span> --}}
                     </a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Contact Us</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">FAQ</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/about-us">About Us</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contact-us">Contact Us</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="faq">FAQ</a></li>
                     <li role="presentation" class="divider"></li>
                     {{-- <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li> --}}
                   </ul>

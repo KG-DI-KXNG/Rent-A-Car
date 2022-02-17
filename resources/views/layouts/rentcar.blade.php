@@ -39,7 +39,7 @@
 <!-- /Switcher -->  
 
 
-@include('../includes/rentcarheader')
+@include('../includes/header')
 
 @yield('content')
 <!--Footer -->
