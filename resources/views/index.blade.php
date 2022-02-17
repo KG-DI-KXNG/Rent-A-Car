@@ -86,7 +86,7 @@
               <h3 style="text-align:center;">Available Cars</h3>
       <br>
               <section class="menu-content">
-                              <a href="1">
+                    {{--           <a href="1">
                   <div class="sub-menu">
                   
       
@@ -158,7 +158,7 @@
                   
                   </div> 
                   </a>
-                       {{--       <a href="9">
+                             <a href="9">
                   <div class="sub-menu">
                   
       
