@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-      return \view('dashboard', ['page'=>"Category"]);
+      return \view('dashboard', ['page'=>"All Vehicles"]);
     }
 
     /**

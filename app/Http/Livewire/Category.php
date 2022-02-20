@@ -103,7 +103,7 @@ class Category extends Component
         $v->color = $this->vehicle['color'];
         $v->year = $this->vehicle['year'];
         $v->price = $this->vehicle['per_day'];
-        // $v->save();
+        $v->save();
         \activitylogger(['Vehicle', $v->id], "Added a new vehicle ".$this->vehicle['lic']);
         $this->resetExcept("allCategory");
         $this->dispatchBrowserEvent('msg', [

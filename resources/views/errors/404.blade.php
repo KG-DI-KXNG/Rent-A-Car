@@ -101,8 +101,8 @@ svg {
     </g>
 </svg>
 <div class="message-box">
-  <h1>404</h1>
-  <p>Page not found</p>
+  <h1 style="color:red">404</h1>
+  <p style="color:red">Page not found</p>
   <div class="buttons-con">
     <div class="action-link-wrap">
       <a onclick="history.back(-1)" class="link-button link-back-button">Go Back</a>

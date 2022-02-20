@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CarDetail;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
@@ -18,7 +19,8 @@ class CarDetailController extends Controller
     {
         //
         $CarDetail=CarDetail::all();
-        return view('car-listing',compact ('CarDetail'));
+        $categories = Category::all();
+        return view('car-listing',compact ('CarDetail', 'categories'));
      
     }
 

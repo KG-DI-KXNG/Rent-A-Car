@@ -58,21 +58,24 @@
       <aside class="col-md-3 col-md-pull-9">
         <div class="sidebar_widget">
           <div class="widget_heading">
-            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find Your  Car </h5>
+            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find Your Car </h5>
           </div>
           <div class="sidebar_filter">
-            <form action="search-carresult.php" method="post">
+            <form>
               <div class="form-group select">
                 <select class="form-control" name="brand">
                   <option>Select Type</option>
-                  <option>With Driver</option>
+                  @foreach ($categories as $item)
+                      
+                  <option>{{$item->type}}</option>
+                  @endforeach
                   <option>Without Driver</option>
                 </select>
               </div>
 
              
               <div class="form-group">
-                <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i> Search Car</button>
+                <button type="button" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i> Search Car</button>
               </div>
             </form>
           </div>

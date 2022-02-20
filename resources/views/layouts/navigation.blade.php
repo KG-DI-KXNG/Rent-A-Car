@@ -39,7 +39,7 @@
                     <path fill-rule="evenodd" d="M2.832 13.228 8 9a1 1 0 1 0-1-1l-4.228 5.168-.026.086.086-.026z"/>
                   </svg>
             </x-slot>
-            {{ __('Add Category') }}
+            {{ __('Vehicles') }}
         </x-nav-link>
 {{-- 
         <x-nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">
