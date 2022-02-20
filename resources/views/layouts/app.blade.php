@@ -18,6 +18,9 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+        <!-- SweetAlert V2 -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
@@ -43,4 +46,6 @@
         
     </body>
     @livewireScripts
+    <script src="{{url('js/SweetAlert.js')}}" defer></script>
+
 </html>

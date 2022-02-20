@@ -54,11 +54,14 @@ fieldset {
 #contact input[type="number"],
 #posttype,
 #Category,
+#color,
+#year,
+#capacity,
 #Location,
 #newCategory,
 #carpic,
 #contact textarea {
-    width: 100%;
+    /* width: 100%; */
     border: 1px solid #ccc;
     background: #FFF;
     margin: 0 0 5px;
@@ -119,12 +122,47 @@ input[type=number] {
 }   
 
 /* End Upload Car */
+
+
+.pulse:hover,
+.pulse:focus {
+  -webkit-animation: pulse 1s;
+          animation: pulse 1s;
+  box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+  border-color: var(--hover);
+  color: #fff;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--hover);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--hover);
+  }
+}
+
+.pulse{
+    background: none;
+  border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  --color: #ff0000;
+  --hover: #c03000;
+
+  color: var(--color);
+  transition: 0.25s;
+}
     </style>
     <x-button class="ml-[80%]" wire:click="$set('view',true)">
         add
     </x-button>
     <div class="px-3 py-4 flex justify-center">
-        <form method="post">@csrf
+        <form wire:submit.prevent>
         <table class="text-md bg-white shadow-md rounded mb-4">
             <tbody>
                 <tr class="border-b">
@@ -136,17 +174,19 @@ input[type=number] {
                     <th class="text-left p-3 px-5">Capacity</th>
                     <th class="text-left p-3 px-5">Color</th>
                     <th class="text-left p-3 px-5">Last Rented</th>
+                    <th class="text-left p-3 px-5"></th>
                 
                 </tr>
-                {{-- @forelse ($student as $students) --}}
+                @forelse ($allVehicles as $v)
              <tr class="border-b hover:bg-orange-100 bg-gray-100">
-                <td class="p-3 px-5">{{--$students->first_nm--}}</td>
-                    <td class="p-3 px-5">{{--$students->last_nm--}}</td>
-                    <td class="p-3 px-5">{{--$students->email--}}</td>
-                    <td class="p-3 px-5">{{--$students->phone_nbr--}}</td>
-                    <td class="p-3 px-5">{{--$students->gender--}}</td>
-                    <td class="p-3 px-5">{{--$students->dob--}}</td>
-                    <td class="p-3 px-5">{{--$students->class--}}</td>
+                <td class="p-3 px-5">{{$v['license_no'] }}</td>
+                    <td class="p-3 px-5">{{$v['Make']}}</td>
+                    <td class="p-3 px-5">{{$v['Model']}}</td>
+                    <td class="p-3 px-5">{{$v['year']}}</td>
+                    <td class="p-3 px-5">{{$v['category']['type']}}</td>
+                    <td class="p-3 px-5">{{$v['capacity']}}</td>
+                    <td class="p-3 px-5">{{$v['color']}}</td>
+                    <td class="p-3 px-5">{{$v['date_Rented']??""}}</td>
     
                     <td class="p-3 px-5 flex justify-end">
                         <button class="py-2 px-3">
@@ -162,7 +202,7 @@ input[type=number] {
                               </svg>
                         </button>
                         
-                        <button class="py-2 px-3">
+                        <button id="deleteBtn" wire:click="deleteVehicle({{$v['id']}})" class="py-2 px-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
                                 <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
                               </svg>
@@ -180,13 +220,13 @@ input[type=number] {
                     
                 </tr>  
                 
-                {{-- @empty --}}
-                    {{-- <tr>
+                @empty
+                    <tr>
                         <td colspan="4">No records</td>
-                    </tr> --}}
-                {{-- @endforelse --}}
+                    </tr>
+                @endforelse
                 <tr>
-                    <td colspan="6">{{-- $student->links() --}}</td>
+                    <td colspan="6">{{ $allVehicles->links() }}</td>
                 </tr>
                 
                 @isset($editStudent)
@@ -228,108 +268,146 @@ input[type=number] {
              <x-dialog-modal wire:model="view" id="viewId" maxWidth="2xl" >
            
     
-                <x-slot name="title" class="">
-                    {{"View"}}
+                <x-slot name="title">
+                    {{-- {{"View"}} --}}
+                    <button wire:click="$toggle('view')" class="pulse">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                            <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                          </svg>
+                    </button>
+
                 </x-slot>
                 <x-slot name="content" >
         
                     <section>
                         <div class="uploadcontainer">  
-                          <form id="contact" action="{{--route('car_details.store')--}}" method="POST" enctype=multipart/form-data>
-                             @csrf
+                          <form id="contact" wire:submit.prevent="addVehicle">
                             <h2><a>Upload Car</a></h2>
                             <h4><a>Provide The Details</a></h4>
                             <fieldset>
-                              <input placeholder="Car Make eg: Honda" type="text" wire:model.lazy="vehicle.make"  required autofocus>
+                              <input class="w-full" placeholder="Car Make eg: Honda" type="text" wire:model.lazy="vehicle.make"  required autofocus>
+                            @error('vehicle.make') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+
                             </fieldset>
-                            <fieldset>
-                              <input placeholder="Car Price Per Day eg: 12USD" type="number" wire:model.lazy="vehicle.per_day"  required>
-                            </fieldset>
+                            
                         
                             <fieldset>
-                              <input placeholder="Car Model eg: Civic" type="number" wire:model.lazy="vehicle.model"  required>
+                              <input class="w-full" placeholder="Car Model eg: Civic" type="text" wire:model.lazy="vehicle.model"  required>
+                            @error('vehicle.model') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+
                             </fieldset>
                         
-                            <fieldset>   
-                            <input placeholder="Capacity eg: 5" type="number" wire:model.lazy="vehicle.capacity"  required>
+                            <fieldset class="flex space-x-2">   
+                            <select class="w-1/2" wire:model="vehicle.capacity" id="capacity">
+                                <option value="4">4 Seater</option>
+                                <option value="5" selected>5 Seater</option>
+                                <option value="7">7 Seater</option>
+                                <option value="8">8 Seater</option>
+                            </select>
+                            @error('vehicle.capacity') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+
+                            <select class="w-1/2" wire:model.lazy="vehicle.color" id="color">
+                                @foreach ($carColor as $color)
+                                <option value="{{$color}}">{{$color}}</option>
+                                    
+                                @endforeach
+                            </select>
+                            @error('vehicle.color') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+
                             </fieldset>
                         
                             <fieldset class="flex">
-                              <input placeholder="License Plate eg: AB1234" wire:model.lazy="vehicle.lic" type="text"  required>
-                              {{-- <input placeholder="Color" value="" wire:model.lazy="vehicle.color" type="color" required> --}}
-                            </fieldset>
-                            <fieldset>
-                            {{-- </fieldset>
-                            <fieldset> --}}
-                           <input id="carpic" type="file" wire:model.lazy="carpic"  required>
-                            </fieldset>
-                          
-                            <fieldset>
-                         
-                          <select wire:model.lazy="vehicle.category" id="posttype">
-                          <option value="" disabled selected>Select Car Type</option>
-                            <option value="With Driver">With Driver</option>
+                              <input class="w-full" placeholder="License Plate eg: AB1234" wire:model.lazy="vehicle.lic" type="text"  required>
+                            @error('vehicle.lic') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
 
-                                <option value="Without Driver">Without Driver</option>
-
-                          </select>
                             </fieldset>
+                           
+                            <fieldset class="flex space-x-2">
+                                <input class="w-1/2" placeholder="Car Price Per Day eg: 12USD" type="number" wire:model.lazy="vehicle.per_day"  required>
+                            @error('vehicle.per_day') <span class="text-red-500 text-sm">*</span> @enderror
+
+                                <select class="w-1/2" wire:model.lazy="vehicle.year" required id="year">
+                                    @for ($year=2005;$year<=2022;$year++)
+                                        
+                                    <option value="{{$year}}">{{$year}}</option>
+                                    @endfor
+                                </select>
+                            @error('vehicle.year') <span class="text-red-500 text-sm">*</span> @enderror
+                               
+                              </fieldset>
                         
                             <fieldset>
-                                <select wire:model="vehicle.category" onchange="newCayegory(e)" id="Category" required>
-                                <option value="" disabled selected>Select The City</option>
-                                <option value="Islamabad">Islamabad</option>
+                                <select class="w-full" wire:model="vehicle.category" id="Category" required>
+                                <option value="" disabled selected>Select Category</option>
+                                    @foreach ($allCategory as $cat)
+                                        
+                                    <option value="{{$cat['id']}}">{{$cat['type']}}</option>
+                                    @endforeach
                                 <optgroup>
                                     <option value="new_category" onclick="newCategory()">
                                         Add Category
                                     </option>
                                 </optgroup>
                             </select>
-                        
+                            @error('vehicle.category') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                             </fieldset>
+                            @if ($showCategory)
+                                <fieldset>
+                                    <div class="category">
+                                        <input class="w-full" type="text" wire:model="newCategory" id="newCategory" placeholder="Enter Category Name">
+                                        @error('newCategory') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                                        {{-- <x-button type="button" wire:click.prevent="addCategory()">Done</x-button> --}}
+                                    </div>
+                                </fieldset>
+                            @endif
+                            <div class="grid grid-cols-1 mt-5 mx-7">
+                                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold mb-1">Upload Photo</label>
+                                  <div class='flex items-center justify-center w-full'>
+                                      <label class='flex flex-col border-4 border-dashed w-full h-32 hover:bg-gray-100 hover:border-purple-300 group'>
+                                          <div class='flex flex-col items-center justify-center pt-7'>
+                                            <svg class="w-10 h-10 text-purple-400 group-hover:text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                            <p class='lowercase text-sm text-gray-400 group-hover:text-purple-600 pt-1 tracking-wider'>Select a photo</p>
+                                          </div>
+                                        <input wire:model="photos" multiple type='file' class="hidden" />
+                                      </label>
+                                  </div>
+                                  
+                                  
+                              </div>
+                              <div wire:loading wire:target="photos">Uploading...</div>
+                                  <div class="flex space-x-1 w-full overflow-scroll align-middle">
+                                    @forelse ($photos as $photo)
+                                        <div >
+                                            
+                                            <img style="width:100px ;  height:auto;" class="my-auto" src="{{ $photo->temporaryUrl() }}"> 
+                                        </div>
+                                    @empty
+                                        0 Files Selected {{$test}}
+                                    @endforelse
+                                </div>
+                          
+                                
+                        
                             
-                          </form>
                         </div>
 
-                        <div class="category hidden">
-                            <input type="text" wire:model="category" id="newCategory" placeholder="Enter Category Name">
-                        </div>
+                       
                         
                         </section>
              
                 </x-slot>
                 <x-slot name="footer">
-                    <button class="left-0" onclick="newCategory()">
+                    {{-- <button type="button" class="py-2 px-4 categorybtn mr-5 text-center rounded-md text-white hover:bg-green-500 bg-green-600" onclick="newCategory()">
                         add Category
-                    </button>
-                    
+                    </button> --}}
+
+                        <button type="submit" id="add-vehicle" class="py-2 px-4 mr-5 text-center rounded-md text-white hover:bg-green-500 bg-green-600">Save</button>
+                        
                        
-                       <button class="py-2 px-4 mr-5 text-center rounded-md text-white hover:bg-green-500 bg-green-600">Upload</button>
-                    
-                    
-                    <x-button wire:click="$toggle('view')">Close</x-button>
                 </x-slot>
-                
+            </form>
             </x-dialog-modal>
-  
-    <script>
-        const uploadCar = document.querySelector('.uploadcontainer')
-        const category = document.querySelector('.category')
-        let toggle = true;
-        function newCategory(){
-            console.log('yes');
-            if(toggle){
-                uploadCar.classList.add('hidden')
-                category.classList.remove('hidden')
 
-                return toggle = false
-            }else{
-                category.classList.add('hidden')
-                uploadCar.classList.remove('hidden')
-                return toggle = true
-            }
-        }
-        
 
-    </script>
 </div>

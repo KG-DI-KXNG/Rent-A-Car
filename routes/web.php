@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarDetailController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomersController;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,8 @@ Route::get('contact', function () {
 Route::get('adminlogin', function () {
     return view('admin/index');
 });
+
+Route::get('car-listing', [CarDetailController::class, 'index']);
 
 
 Route::middleware('auth')->group(function () {
