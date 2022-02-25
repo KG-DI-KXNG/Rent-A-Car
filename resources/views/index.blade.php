@@ -194,6 +194,9 @@
                                         <li><i class="fa fa-calendar" aria-hidden="true"></i>2015</li>
                                         <li><i class="fa fa-user" aria-hidden="true"></i>7 seats</li>
                                     </ul>
+                                    <span>
+                                        <button class="btn btn-primary"></button>
+                                    </span>
                                 </div>
                                 <div class="car-title-m">
                                     <h6><a href="">Toyota , Voxy</a></h6>
@@ -240,32 +243,32 @@
                 <div class="col-lg-3 col-xs-6 col-sm-3">
                     <div class="fun-facts-m">
                         <div class="cell">
-                            <h2><i class="fa fa-calendar" aria-hidden="true"></i>40+</h2>
-                            <p>Years In Business</p>
+                            {{-- <h2><i class="fa fa-calendar" aria-hidden="true"></i>40+</h2> --}}
+                            <p>Child Seat Upgrade</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-xs-6 col-sm-3">
                     <div class="fun-facts-m">
                         <div class="cell">
-                            <h2><i class="fa fa-car" aria-hidden="true"></i>1200+</h2>
-                            <p>New Cars For Sale</p>
+                            {{-- <h2><i class="fa fa-car" aria-hidden="true"></i>1200+</h2> --}}
+                            <p>GPS Upgrade</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-xs-6 col-sm-3">
                     <div class="fun-facts-m">
                         <div class="cell">
-                            <h2><i class="fa fa-car" aria-hidden="true"></i>1000+</h2>
-                            <p>Used Cars For Sale</p>
+                            {{-- <h2><i class="fa fa-car" aria-hidden="true"></i>1000+</h2> --}}
+                            <p>VIP Pickup</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-xs-6 col-sm-3">
                     <div class="fun-facts-m">
                         <div class="cell">
-                            <h2><i class="fa fa-user-circle-o" aria-hidden="true"></i>600+</h2>
-                            <p>Satisfied Customers</p>
+                            {{-- <h2><i class="fa fa-user-circle-o" aria-hidden="true"></i>600+</h2> --}}
+                            <p>Multiple Pickup Location</p>
                         </div>
                     </div>
                 </div>
