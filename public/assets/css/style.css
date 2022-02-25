@@ -1244,6 +1244,13 @@ nav.navbar {
   position: absolute;
   width: 100%;
 }
+
+.car-info-box span {
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  bottom: 10px;
+}
 .car-info-box li {
   color: #ffffff;
   display: inline-block;
