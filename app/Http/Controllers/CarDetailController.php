@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CarDetail;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Vehicles;
 use Illuminate\Http\Request;
 use DB;
 
@@ -18,7 +19,7 @@ class CarDetailController extends Controller
     public function index()
     {
         //
-        $CarDetail=CarDetail::all();
+        $CarDetail=Vehicles::all();
         $categories = Category::all();
         return view('car-listing',compact ('CarDetail', 'categories'));
      

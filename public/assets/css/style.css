@@ -1235,21 +1235,32 @@ nav.navbar {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin-top: 40px;
 }
-.car-info-box { position:relative;}
+.car-info-box { position:relative; overflow: hidden;}
 .car-info-box ul {
   background: rgba(0, 0, 0, 0.6) none repeat scroll 0 0;
   bottom: 0;
   margin: 0 auto;
   padding: 0 15px;
   position: absolute;
+  transition: ease-in-out 300ms;
   width: 100%;
 }
 
 .car-info-box span {
   position: absolute;
   width: 100%;
+  display: flex;
+  transform: translateY(60px);
+  transition: ease-in-out 300ms;
   margin: 0 auto;
   bottom: 10px;
+}
+
+.car-info-box:hover span {
+  transform: translateY(10px);
+}
+.car-info-box:hover ul {
+  transform: translateY(-40px);
 }
 .car-info-box li {
   color: #ffffff;

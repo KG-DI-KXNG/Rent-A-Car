@@ -91,8 +91,8 @@
             @forelse ($CarDetail as $key=>$data)
               <li class="gray-bg">
                 <div class="recent_post_img"> <a href="cardetail/{{$data->id}}"><img src="uploads/{{$data->carpic}}" alt="image"></a> </div>
-                <div class="recent_post_title"> <a href="cardetail/{{$data->id}}">{{$data->carname}}</a>
-                  <p class="widget_price">{{$data->carprice}}Rs Per Day</p>
+                <div class="recent_post_title"> <a href="cardetail/{{$data->id}}">{{$data->Make. " ". $data->Model}}</a>
+                  <p class="widget_price">{{$data->price}}USD Per Day</p>
                 </div>
               </li>
               @empty

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Category as ModelsCategory;
+use App\Models\Image;
 use App\Models\Vehicles;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -18,6 +19,67 @@ class Category extends Component
     public $newCategory; 
     public $test;
     public $photos = [];
+    public $carMake = ["Acura",
+    "Alfa Romeo",
+    "AM General",
+    "AMC",
+    "Aston Martin",
+    "Audi",
+    "Bentley",
+    "BMW",
+    "Bricklin",
+    "Buick",
+    "Cadillac",
+    "Chevrolet",
+    "Chrysler",
+    "Daewoo",
+    "Datsun",
+    "Dodge",
+    "Eagle",
+    "Ferrari",
+    "Fiat",
+    "Ford",
+    "Geo",
+    "GMC",
+    "Honda",
+    "HUMMER",
+    "Hyundai",
+    "Infiniti",
+    "Isuzu",
+    "Jaguar",
+    "Jeep",
+    "Kia",
+    "Land Rover",
+    "Lexus",
+    "Lincoln",
+    "Lamborghini",
+    "Lotus",
+    "Maserati",
+    "Mazda",
+    "Mercedes-Benz",
+    "Mercury",
+    "MG",
+    "MINI",
+    "Mitsubishi",
+    "Nissan",
+    "Oldsmobile",
+    "Plymouth",
+    "Pontiac",
+    "Porsche",
+    "RAM",
+    "Renault",
+    "Rolls Royce",
+    "Saab",
+    "Saturn",
+    "Scion",
+    "Shelby",
+    "Smart",
+    "Subaru",
+    "Suzuki",
+    "Toyota",
+    "Triumph",
+    "Volkswagen",
+    "Volvo"];
     public $carColor = ['Red', "Black", "Green", "Yellow", "White", "Silver", "Grey"];
 
     protected $listener = ['closeView'];
@@ -78,9 +140,6 @@ class Category extends Component
 
     public function addVehicle(){
         $this->validateOnly("photos");
-        // foreach ($this->photos as $photo) {
-        //     $photo->store('photos');
-        // }
 
         if($this->vehicle['category'] == "new_category"){
             $this->validateOnly("newCategory");
@@ -92,7 +151,7 @@ class Category extends Component
         }
 
         
-        // $this->validate();
+        $this->validate();
 
         $v = new Vehicles();
         $v->category_id = $categoryId;
@@ -104,6 +163,13 @@ class Category extends Component
         $v->year = $this->vehicle['year'];
         $v->price = $this->vehicle['per_day'];
         $v->save();
+
+        foreach ($this->photos as $photo) {
+            $photo->store('photos');
+            $v->image()->create(['image_name'=>$photo->getClientOriginalName()]);
+        }
+
+        
         \activitylogger(['Vehicle', $v->id], "Added a new vehicle ".$this->vehicle['lic']);
         $this->resetExcept("allCategory");
         $this->dispatchBrowserEvent('msg', [

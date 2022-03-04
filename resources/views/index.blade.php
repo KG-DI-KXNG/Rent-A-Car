@@ -19,6 +19,11 @@
     <link rel="stylesheet" href="assets/css/user.css">
     <link rel="stylesheet" href="assets/w3css/w3.css">
 
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" id="switcher-css" type="text/css" href="assets/switcher/css/switcher.css" media="all" />
     <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all"
@@ -58,7 +63,7 @@
                         <div class="banner_content">
                             <h1>Find the right car for you.</h1>
                             <p>Quality rentals when you choose our epic brand. </p>
-                            <a href="#" class="btn">Rent Now <span class="angle_arrow"><i
+                            <a href="/car-listing" class="btn">Rent Now <span class="angle_arrow"><i
                                         class="fa fa-angle-right" aria-hidden="true"></i></span></a>
                         </div>
                     </div>
@@ -109,6 +114,10 @@
                                         <li><i class="fa fa-calendar" aria-hidden="true"></i>2012</li>
                                         <li><i class="fa fa-user" aria-hidden="true"></i>5 seats</li>
                                     </ul>
+                                    <span>
+                                        <a href="#" class="btn animate__animated     animate__headShake">Rent Now <div class="angle_arrow"><i
+                                            class="fa fa-angle-right" aria-hidden="true"></i></div></a>
+                                    </span>
                                 </div>
                                 <div class="car-title-m">
                                     <h6><a href=" ">Mazda , Demio</a></h6>
@@ -132,6 +141,10 @@
                                         <li><i class="fa fa-calendar" aria-hidden="true"></i>2016</li>
                                         <li><i class="fa fa-user" aria-hidden="true"></i>5 seats</li>
                                     </ul>
+                                    <span>
+                                        <a href="#" class="btn animate__animated     animate__headShake">Rent Now <div class="angle_arrow"><i
+                                            class="fa fa-angle-right" aria-hidden="true"></i></div></a>
+                                    </span>
                                 </div>
                                 <div class="car-title-m">
                                     <h6><a href="">Mazda , Cx5</a></h6>
@@ -154,6 +167,10 @@
                                         <li><i class="fa fa-calendar" aria-hidden="true"></i>2005</li>
                                         <li><i class="fa fa-user" aria-hidden="true"></i>5 seats</li>
                                     </ul>
+                                    <span>
+                                        <a href="#" class="btn animate__animated     animate__headShake">Rent Now <div class="angle_arrow"><i
+                                            class="fa fa-angle-right" aria-hidden="true"></i></div></a>
+                                    </span>
                                 </div>
                                 <div class="car-title-m">
                                     <h6><a href="">Mitsubishi , gallant</a></h6>
@@ -174,6 +191,10 @@
                                         <li><i class="fa fa-calendar" aria-hidden="true"></i>2015</li>
                                         <li><i class="fa fa-user" aria-hidden="true"></i>7 seats</li>
                                     </ul>
+                                    <span>
+                                        <a href="#" class="btn animate__animated     animate__headShake">Rent Now <div class="angle_arrow"><i
+                                            class="fa fa-angle-right" aria-hidden="true"></i></div></a>
+                                    </span>
                                 </div>
                                 <div class="car-title-m">
                                     <h6><a href="">Toyota , Voxy</a></h6>
@@ -195,7 +216,8 @@
                                         <li><i class="fa fa-user" aria-hidden="true"></i>7 seats</li>
                                     </ul>
                                     <span>
-                                        <button class="btn btn-primary"></button>
+                                        <a href="#" class="btn animate__animated     animate__headShake">Rent Now <div class="angle_arrow"><i
+                                            class="fa fa-angle-right" aria-hidden="true"></i></div></a>
                                     </span>
                                 </div>
                                 <div class="car-title-m">
@@ -219,6 +241,10 @@
                                         <li><i class="fa fa-calendar" aria-hidden="true"></i>2012</li>
                                         <li><i class="fa fa-user" aria-hidden="true"></i>5 seats</li>
                                     </ul>
+                                    <span>
+                                        <a href="#" class="btn animate__animated     animate__headShake">Rent Now <div class="angle_arrow"><i
+                                            class="fa fa-angle-right" aria-hidden="true"></i></div></a>
+                                    </span>
                                 </div>
                                 <div class="car-title-m">
                                     <h6><a href=" ">Nissan , Sylphy</a></h6>
@@ -376,7 +402,5 @@
     <script src="assets/js/owl.carousel.min.js"></script>
 
 </body>
-
-<!-- Mirrored from themes.webmasterdriver.net/carforyou/demo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jun 2017 07:22:11 GMT -->
 
 </html>
