@@ -1,5 +1,5 @@
 <x-app-layout>
-    <style>
+    {{-- <style>
         .my-actions { margin: 0 2em; }
         .order-1 { order: 1; }
         .order-2 { order: 2; }
@@ -219,7 +219,7 @@
             showPassword.classList.add("fa-eye-slash");
             password = false;
         }else{
-            console.log('fasle');
+            console.log('false');
             document.querySelector("#password").type="password";
             showPassword.classList.remove("fa-eye-slash");
             showPassword.classList.add("fa-eye");
@@ -262,6 +262,8 @@
         }
         })
     }
-</script>
+</script> --}}
+
+<admin-user user="{{$users}}"></admin-user>
     
 </x-app-layout>

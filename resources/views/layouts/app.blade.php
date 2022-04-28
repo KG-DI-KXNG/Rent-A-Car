@@ -16,36 +16,32 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+        <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
+
+        <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
 
         <!-- SweetAlert V2 -->
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
-        @livewireStyles
-        <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200 font-roboto">
-            @include('layouts.navigation')
+    <body >
 
-            <div class="flex overflow-hidden flex-col flex-1">
-                @include('layouts.header')
-
-                <main class="overflow-y-auto overflow-x-hidden flex-1 bg-gray-200">
-                    <div class="container px-6 py-8 mx-auto">
-                        <h3 class="mb-4 text-3xl font-medium text-gray-700">
-                            {{ $header }}
-                        </h3>
+            <div id="app">
+            
 
                         {{ $slot }}
-                    </div>
-                </main>
-            </div>
+                
         </div>
         
     </body>
-    @livewireScripts
     <script src="{{url('js/SweetAlert.js')}}" defer></script>
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-</html>
+    
+    </html>

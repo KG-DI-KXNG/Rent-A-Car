@@ -19,8 +19,9 @@ class CarDetailController extends Controller
     public function index()
     {
         //
-        $CarDetail=Vehicles::all();
+        $CarDetail=Vehicles::with('image')->get();
         $categories = Category::all();
+        // dd($CarDetail);
         return view('car-listing',compact ('CarDetail', 'categories'));
      
     }
@@ -92,10 +93,8 @@ class CarDetailController extends Controller
      */
     public function show($carid)
     {
-    $CarDetail = CarDetail::select('*')
-    ->where('id', '=', $carid)
-    ->get();
-    return view('cardetail',compact('CarDetail'));
+    $CarDetail = Vehicles::with(['image', 'category'])->findOrFail($carid);
+    return view('booknow',compact('CarDetail'));
     }
     
 

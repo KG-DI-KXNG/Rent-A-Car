@@ -32,17 +32,17 @@
 
 @forelse ($CarDetail as $key=>$data)
         <div class="product-listing-m gray-bg">
-          <div class="product-listing-img"><img  src="uploads/{{$data->carpic}} " class="img-responsive" alt="Image" /> </a> 
+          <div class="product-listing-img"><img  src="/storage/{{$data->image[0]->image_name}} " class="img-responsive" alt="Image" /> </a> 
           </div>
           <div class="product-listing-content">
-            <h5><a href="  cardetail/{{$data->id}} ">{{$data->carname}} </a></h5>
-            <p class="list-price">Price Per Day: {{$data->carprice}} RS  </p>
+            <h5><a href="  cardetail/{{$data->id}} ">{{$data->Make .' - '. $data->Model}} </a></h5>
+            <p class="list-price">Price Per Day: {{$data->price}} JMD  </p>
             <ul>
-              <li><i class="fa fa-user" aria-hidden="true"></i> {{$data->carseats}} seats</li>
-              <li><i class="fa fa-calendar" aria-hidden="true"></i> {{$data->carmodel}} model</li>
-              <li><i class="fa fa-car" aria-hidden="true">{{$data->posttype}} </i></li>
+              <li><i class="fa fa-user" aria-hidden="true"></i> {{$data->capacity}} seats</li>
+              <li><i class="fa fa-calendar" aria-hidden="true"></i> {{$data->Model}} model</li>
+              <li><i class="fa fa-car" aria-hidden="true">{{$data->category->type}} </i></li>
             </ul>
-            <p class="list-city">City: {{$data->location}} </p>
+            <p class="list-city">City: {{'Kingston'}} </p>
 
             <a href="cardetail/{{$data->id}} " class="btn">View Details <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
           </div>
@@ -90,9 +90,9 @@
 
             @forelse ($CarDetail as $key=>$data)
               <li class="gray-bg">
-                <div class="recent_post_img"> <a href="cardetail/{{$data->id}}"><img src="uploads/{{$data->carpic}}" alt="image"></a> </div>
+                <div class="recent_post_img"> <a href="cardetail/{{$data->id}}"><img src="/storage/{{$data->image[0]->image_name}}" alt="image"></a> </div>
                 <div class="recent_post_title"> <a href="cardetail/{{$data->id}}">{{$data->Make. " ". $data->Model}}</a>
-                  <p class="widget_price">{{$data->price}}USD Per Day</p>
+                  <p class="widget_price">{{$data->price}} Per Day</p>
                 </div>
               </li>
               @empty

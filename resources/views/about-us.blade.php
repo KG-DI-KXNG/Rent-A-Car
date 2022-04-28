@@ -133,7 +133,7 @@
                                     your vacation or travel plan take you to Jamaica then you need to know the right company
                                     that can meet your rent-a car needs. Reserve your rent-a car with pick up and drop off
                                     times that allow time for you to get to and from your flights. Also, be sure to include
-                                    your flight number and airline in your car rental reservation so that Epic Car Rental
+                                    your flight number and airline in your car rental reservation so that KG Exclusive Car Rental
                                     team can accommodate any delays that may affect your schedule and make your rental
                                     experience easier.</span></p>
                             <p style="margin: 0px 0px 11px;"><span

@@ -14,12 +14,12 @@ class Vehicles extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
     
     public function image()
     {
-        return $this->hasMany(Image::class);
+        return $this->hasMany(Image::class, 'vehicle_id');
     }
 
     /**

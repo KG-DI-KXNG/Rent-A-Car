@@ -40,8 +40,10 @@
 
 
 @include('../includes/header')
+<div id="app">
 
-@yield('content')
+    @yield('content')
+</div>
 <!--Footer -->
 @include('../includes/rentcarfooter')
 <!-- /Footer--> 
@@ -62,7 +64,10 @@
 @include('../includes/forgotpassword')
 <!--/Forgot-password-Form --> 
 
+
+</body>
 <!-- Scripts --> 
+<script src="{{ mix('js/app.js') }}"></script>
 <script src="../assets/js/jquery.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script> 
 <script src="../assets/js/interface.js"></script> 
@@ -74,8 +79,6 @@
 <script src="../assets/js/slick.min.js"></script> 
 <script src="../assets/js/owl.carousel.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-</body>
 
 <!-- Mirrored from themes.webmasterdriver.net/carforyou/demo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jun 2017 07:22:11 GMT -->
 </html>

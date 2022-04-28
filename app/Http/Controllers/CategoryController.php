@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CarDetail;
+use App\Models\Category;
+use App\Models\Image;
+use App\Models\Vehicles;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -13,7 +18,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-      return \view('dashboard', ['page'=>"All Vehicles"]);
+        $allVehicle = Vehicles::with(['image', 'category'])->get();
+      return \view('dashboard', \compact('allVehicle'));
     }
 
     /**
@@ -34,7 +40,55 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'model' => 'required|string',
+            'make' => 'required',
+            'color' => 'required',
+            'year' => 'required',
+            'lic' => 'required',
+            'price' => 'required',
+            'cat' => 'required',
+        ]);
+
+
+        
+
+       if( Category::where('type', $request->cat)->count()) {
+           $c = Category::where('type', $request->cat)->get()->first();
+       }else{
+            $c = new Category;
+            $c->type = $request->cat;
+            $c->save();
+       }
+
+            $car = new Vehicles();
+            $car->make = $request->make;
+            $car->model = $request->model;
+            $car->year = $request->year;
+            $car->capacity = 5;
+            $car->price = $request->price;
+            $car->currency = 'JMD';
+            $car->color = $request->color;
+            $car->license_no = $request->lic;
+            $car->category_id = $c->id;
+
+            $car->save();
+// dd($request->file('files')[0]->getFilename());
+            foreach ($request->file('files') as $key=>$file) {
+                $filename = $file->getFilename() . '.' . $file->extension(); //Custom Filename
+                // Storage::put('public/'.$request->make.'/'.$filename, $file); //Store image
+                
+                $temp = $file->storeAs('public/'.$request->make.'/', $filename);
+
+
+                $image = new Image();
+                $image->vehicle_id = $car->id;
+                $image->image_name = $request->make.'/'.$filename;
+                $image->save();
+            }
+
+        return \response('Successfully Added');
+
     }
 
     /**
@@ -79,6 +133,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Vehicles::findOrFail($id);
+        Vehicles::destroy($id);
+
+        return \response('Deleted');
     }
 }

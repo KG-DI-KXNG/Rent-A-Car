@@ -1,12 +1,12 @@
 <x-app-layout>
   
   @if (request()->routeIs('dashboard'))
-  <x-slot name="header">
-          {{ __( $page ) }}
-  </x-slot>
-    @livewire('admin-dashboard')
+ 
+    {{-- @livewire('admin-dashboard') --}}
+    <admin-dashboard />
   @else
-    @livewire('category')
+    {{-- @livewire('category') --}}
+    <admin-vehicle vehicles="{{$allVehicle}}"/>
   @endif
  
 </x-app-layout>

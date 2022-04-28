@@ -3,6 +3,7 @@
 use App\Http\Controllers\CarDetailController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomersController;
+use App\Models\Vehicles;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +33,8 @@ require __DIR__.'/auth.php';
 
 
 Route::get('index', function () {
-    return view('index');
+    $vehicle = Vehicles::with(['image', 'category'])->inRandomOrder()->get()->take(6);
+    return view('index', compact('vehicle'));
 })->name("index");
 
 Route::get('about-us', function () {
@@ -43,10 +45,13 @@ Route::get('contact', function () {
     return view('contact');
 });
 
+Route::view('reservation', 'booknow')->name('booknow');
+
 Route::get('adminlogin', function () {
     return view('admin/index');
 });
 
+Route::get('cardetail/{id}', [CarDetailController::class, 'show']);
 Route::get('car-listing', [CarDetailController::class, 'index']);
 
 
@@ -55,5 +60,8 @@ Route::middleware('auth')->group(function () {
         Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users');
         Route::post('new-user', [CustomersController::class, 'updateUser'])->name('new_user');
         Route::get('category', [CategoryController::class, 'index'])->name('add-category');
+        Route::post('add-vehicle', [CategoryController::class, 'store'])->name('add-vehicle');
+        Route::post('remove-vehicle/{id}', [CategoryController::class, 'destroy'])->name('del-vehicle');
+
 
 });

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>Epic Car Rental Portal</title>
+    <title>KGE Car Rental</title>
     <!--Bootstrap -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
@@ -62,7 +62,7 @@
                     <div class="col-md-5 col-md-push-7">
                         <div class="banner_content">
                             <h1>Find the right car for you.</h1>
-                            <p>Quality rentals when you choose our epic brand. </p>
+                            <p>Quality rentals when you choose our Exclusive brand. </p>
                             <a href="/car-listing" class="btn">Rent Now <span class="angle_arrow"><i
                                         class="fa fa-angle-right" aria-hidden="true"></i></span></a>
                         </div>
@@ -104,35 +104,37 @@
                     <div role="tabpanel" class="tab-pane active" id="resentnewcar">
 
 
-
+                        @foreach ($vehicle as $car)
+                            
                         <div class="col-list-3">
                             <div class="recent-car-list">
-                                <div class="car-info-box"> <a href=" "><img src="cars/img4.jpeg"
-                                            class="img-responsive" alt="image"></a>
+                                <div class="car-info-box"> <a href=" "><img src="/storage/{{$car->image[0]->image_name}}"
+                                            class="img-responsive" alt="image" style="height: 220px; width:100%"></a>
                                     <ul>
                                         <li><i class="fa fa-car" aria-hidden="true"></i>Petrol</li>
-                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>2012</li>
-                                        <li><i class="fa fa-user" aria-hidden="true"></i>5 seats</li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$car->year}}</li>
+                                        <li><i class="fa fa-user" aria-hidden="true"></i>{{$car->capacity}} seats</li>
                                     </ul>
                                     <span>
-                                        <a href="#" class="btn animate__animated     animate__headShake">Rent Now <div class="angle_arrow"><i
+                                        <a href="cardetail/{{$car->id}}" class="btn animate__animated     animate__headShake">Rent Now <div class="angle_arrow"><i
                                             class="fa fa-angle-right" aria-hidden="true"></i></div></a>
                                     </span>
                                 </div>
                                 <div class="car-title-m">
-                                    <h6><a href=" ">Mazda , Demio</a></h6>
-                                    <span class="price">$20 /Day</span>
+                                    <h6><a href=" ">{{$car->Make. ', '. $car->Model}}</a></h6>
+                                    <span class="price" style="font-size: 12px;">${{$car->price}} /Day</span>
                                 </div>
                                 <div class="inventory_info_m">
-                                    <p>Compact</p>
+                                    <p>{{$car->category->type}}</p>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
 
 
 
 
-                        <div class="col-list-3">
+                        {{-- <div class="col-list-3">
                             <div class="recent-car-list">
                                 <div class="car-info-box"> <a href=""><img src="cars/img2.jpeg" class="img-responsive"
                                             alt="image"></a>
@@ -254,7 +256,7 @@
                                     <p>Sedan</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>
